@@ -1,33 +1,36 @@
 import { FadeIn } from "@/components/ui/fade-in";
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import streammatePng from "@assets/Screenshot_2026-03-06_at_1.53.30_PM_1773165399053.png";
+import qkartPng from "@assets/Screenshot_2026-03-06_at_1.53.43_PM_1773165399054.png";
+import fintech from "@assets/Screenshot_2026-03-06_at_1.55.05_PM_1773165399054.png";
 
 export function Projects() {
   const projects = [
     {
-      title: "BizPe",
-      duration: "Present",
-      description: "A Flutter-based fintech platform for SMBs in India, BizPe simplifies payment collection, reconciliation, and cash flow management with seamless ERP integration and a user-friendly mobile interface.",
-      image: "/assets/bizpe.png",
-      tags: ["Flutter", "React.js", "System Design", "Figma Tokens", "Spring Boot", "Material UI", "DevOps"],
-      links: { github: "https://github.com/SanketMane17", live: "https://bizpe.onelink.me/dWcg/21k6wgyp" },
-      featured: true,
-    },
-    {
-      title: "Video Conferencing Application",
-      duration: "Jul 2024 – Aug 2024",
-      description: "Real-time video conferencing app with WebRTC-based audio/video communication, OAuth authentication and protected routes using Clerk for secure session management.",
-      image: "/assets/video-conf.png",
-      tags: ["Next.js", "TypeScript", "Stream SDK", "Clerk", "Shadcn UI", "Tailwind CSS", "Vercel"],
-      links: { github: "https://github.com/SanketMane17/Video-Conferencing-App", live: "https://sanket-mane-video-conferencing-app.vercel.app/" },
+      title: "StreamMate",
+      duration: "2024",
+      description: "A real-time video conferencing platform featuring WebRTC-based audio/video communication, instant meeting creation, scheduled meetings, and recording capabilities. Built with modern web technologies for seamless user experience.",
+      image: streammatePng,
+      tags: ["WebRTC", "React", "Real-time Communication", "Material UI", "Cloud Storage"],
+      links: { github: "https://github.com", live: "#" },
       featured: true,
     },
     {
       title: "QKart",
       duration: "2023",
       description: "QKart is an e-commerce application offering a variety of products for customers to choose from. Implemented core logic for authentication, shopping cart and checkout. Improved UI with responsive design and utilized REST APIs for dynamic data loading.",
-      image: "/assets/qkart.png",
+      image: qkartPng,
       tags: ["React JS", "JavaScript", "Node", "Express", "Material UI", "REST APIs"],
       links: { github: "https://github.com/SanketMane17/QKart", live: "https://sanket-qkart.netlify.app/" },
+      featured: true,
+    },
+    {
+      title: "Fintech Accounting Platform",
+      duration: "2024",
+      description: "An enterprise-grade financial management platform for businesses to track collections, manage cash flow, and monitor transactions. Features intuitive dashboards for quick actions and comprehensive reporting tools.",
+      image: fintech,
+      tags: ["React", "Financial Management", "Dashboard", "Data Visualization", "Mobile-First"],
+      links: { github: "https://github.com", live: "#" },
       featured: true,
     }
   ];
