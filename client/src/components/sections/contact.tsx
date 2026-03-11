@@ -10,10 +10,7 @@ import emailjs from "emailjs-com";
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
   email: z.string().email("Please enter a valid email address").min(1, "Email is required"),
-  message: z.string().min(10, "Message must be at least 10 characters").max(1000, "Message must be less than 1000 characters").refine(
-    (val) => val.trim().length > 0,
-    "Message cannot be empty"
-  ),
+  message: z.string().min(1, "Message is required"),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
