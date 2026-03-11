@@ -6,17 +6,19 @@ export function Experience() {
     {
       id: 1,
       role: "Founding Engineer",
-      company: "BizPe (Fintech)",
+      company: "BizPe – Antler-backed Fintech Startup",
       period: "December 2024 – Present",
       location: "Bengaluru, Karnataka",
       highlights: [
-        "Architected full-stack fintech platform with Flutter, React.js & RESTful APIs — scaled to 5,000+ users",
-        "Built AI-powered voice billing using Speech-to-Text + LLM pipelines, reducing invoice creation time by ~80%",
-        "Built cross-platform component library with Figma tokens and Google Material Design",
-        "Owned CI/CD pipelines with GitHub Actions and Shorebird OTA for daily deployments",
-        "Improved app startup time by ~35% via deferred initialization"
+        "Architected full-stack fintech platform with Flutter, React.js, and RESTful APIs, scaling to 5,000+ users",
+        "Built AI-powered voice billing using Speech-to-Text and LLM pipelines, reducing invoice creation time by ~80%",
+        "Built cross-platform component library with Figma tokens and Google Material Design across web and mobile",
+        "Owned CI/CD pipelines with GitHub Actions and Shorebird OTA for daily deployments and hotfixes without app store releases",
+        "Designed secure payment workflows and API integrations meeting financial compliance standards",
+        "Improved app startup time by ~35% via deferred initialization of non-critical services post-splash",
+        "Built Spring Boot services for Slack, Zoho, and push notification integrations with Puppeteer PDF generation"
       ],
-      tech: ["Flutter", "React.js", "RESTful APIs", "GitHub Actions", "Shorebird"]
+      tech: ["Flutter", "React.js", "RESTful APIs", "GitHub Actions", "Shorebird", "Spring Boot", "Puppeteer", "Figma Integration"]
     },
     {
       id: 2,
@@ -25,11 +27,12 @@ export function Experience() {
       period: "December 2022 – December 2024",
       location: "Bengaluru, Karnataka",
       highlights: [
-        "Joined as 2nd frontend engineer in a 0-to-1 startup, building across React.js, Next.js & Flutter",
-        "Owned multi-role RBAC dashboard — primary revenue-driving business operations interface",
-        "Built contractor attendance system covering attendance, salary & leave management",
-        "Led PWA to Flutter migration, improving native platform support",
-        "Reduced bundle size by ~35% via memoization, code splitting & lazy loading"
+        "Joined as 2nd frontend engineer in a 0-to-1 startup, building core product across React.js, Next.js, and Flutter",
+        "Owned multi-role RBAC dashboard serving as the primary revenue-driving business operations interface",
+        "Built contractor attendance system from scratch covering attendance marking, salary, and leave management",
+        "Led PWA to Flutter migration, resolving device-specific inconsistencies and improving native platform support",
+        "Optimized React performance via memoization, code splitting, and lazy loading, reducing bundle size by ~35%",
+        "Defined API contracts with internal and external teams, implementing robust error handling across the frontend"
       ],
       tech: ["React.js", "Next.js", "Flutter", "PWA", "Zustand"]
     },
