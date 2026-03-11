@@ -11,7 +11,7 @@ export function Projects() {
       duration: "December 2024 – Present",
       description: "A fintech platform for SMBs in India, BizPe simplifies payment collection, reconciliation, and cash flow management with seamless ERP integration and a user-friendly mobile interface. Features integrated AI-powered voice billing using Speech-to-Text and LLM pipelines.",
       image: bizpePng,
-      tags: ["Flutter", "React.js", "Spring Boot", "System Design", "Riverpod", "Figma Integration", "Tailwind CSS", "Material UI", "Node.js", "RESTful APIs", "Puppeteer", "Zustand"],
+      tags: ["Flutter", "React.js", "Spring Boot", "System Design", "Riverpod", "Figma Integration", "Tailwind CSS", "Material UI", "Node.js", "RESTful APIs", "Puppeteer", "Zustand", "AI Integration"],
       links: { github: "https://github.com/SanketMane17", live: "https://bizpe.onelink.me/dWcg/21k6wgyp" },
       featured: true,
     },
