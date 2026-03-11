@@ -1,24 +1,8 @@
-import { db } from "./db";
-import { messages, type InsertMessage, type MessageResponse } from "@shared/schema";
-import { eq } from "drizzle-orm";
+// Storage file - no longer needed
+// All data is handled client-side for Netlify static deployment
 
 export interface IStorage {
-  getMessages(): Promise<MessageResponse[]>;
-  createMessage(message: InsertMessage): Promise<MessageResponse>;
+  // Empty interface - no database operations needed
 }
 
-export class DatabaseStorage implements IStorage {
-  async getMessages(): Promise<MessageResponse[]> {
-    return await db.select().from(messages);
-  }
-
-  async createMessage(insertMessage: InsertMessage): Promise<MessageResponse> {
-    const [message] = await db
-      .insert(messages)
-      .values(insertMessage)
-      .returning();
-    return message;
-  }
-}
-
-export const storage = new DatabaseStorage();
+export const storage: IStorage = {};
