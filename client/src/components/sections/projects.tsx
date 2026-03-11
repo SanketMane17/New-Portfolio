@@ -18,7 +18,7 @@ export function Projects() {
     {
       title: "QKart",
       duration: "2023",
-      description: "QKart is an e-commerce application offering a variety of products for customers to choose from. Implemented core logic for authentication, shopping cart and checkout. Improved UI with responsive design and utilized REST APIs for dynamic data loading.",
+      description: "An e-commerce platform offering a variety of products with optimized performance and secure authentication. Optimized front-end performance through code splitting and bundle size reduction, achieving 10% improvement in page load times. Boosted app performance using debouncing to reduce API calls on search. Configured JWT tokens for secure user authentication across distributed systems. Developed robust APIs using Node and Express as the backbone of the platform's backend architecture.",
       image: qkartPng,
       tags: ["React JS", "JavaScript", "Node", "Express", "Material UI", "REST APIs"],
       links: { github: "https://github.com/SanketMane17/QKart", live: "https://sanket-qkart.netlify.app/" },
