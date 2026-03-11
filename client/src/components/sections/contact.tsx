@@ -42,11 +42,9 @@ export function Contact() {
       }
 
       await emailjs.send(serviceId, templateId, {
-        from_name: data.name,
-        from_email: data.email,
-        to_email: "msanket450@gmail.com",
+        name: data.name,
+        email: data.email,
         message: data.message,
-        reply_to: data.email,
       });
 
       toast({
