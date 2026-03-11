@@ -20,7 +20,8 @@ A modern, responsive, fully client-side portfolio website built with React, Type
 - **Frontend**: React 18, TypeScript, Tailwind CSS
 - **Build Tool**: Vite
 - **UI Components**: Shadcn UI
-- **Forms**: Netlify Forms with react-hook-form & Zod validation (client-side only)
+- **Forms**: EmailJS with react-hook-form & Zod validation (client-side only, no backend)
+- **Email Library**: EmailJS (free tier) for sending emails
 - **Validation**: Zod schema with email validation, real-time error messages
 - **Styling**: Custom CSS with glass-morphism effects
 - **Routing**: Wouter
@@ -112,6 +113,36 @@ All backend code has been removed:
 - ❌ No API endpoints
 - ✅ Contact form uses Netlify Forms (client-side only)
 
+## Email Integration
+
+The portfolio uses **EmailJS** for sending contact form messages directly to your email:
+- **Service**: Free EmailJS tier (no backend needed)
+- **Email Delivery**: Messages sent to msanket450@gmail.com
+- **Client-Side Only**: No server required - works on static Netlify deployment
+
+### Setup Instructions
+
+1. **Create EmailJS Account**
+   - Go to [emailjs.com](https://www.emailjs.com)
+   - Sign up for free account
+   - Verify your email address
+
+2. **Configure Email Service**
+   - Add a new service (Gmail, Outlook, etc.)
+   - Get your **Service ID**
+   - Create a template with variables: `{from_name}`, `{from_email}`, `{message}`, `{reply_to}`
+   - Get your **Template ID**
+   - Copy your **Public Key** from Account page
+
+3. **Set Environment Variables**
+   - Create `.env.local` with:
+     ```
+     VITE_EMAILJS_PUBLIC_KEY=your_public_key
+     VITE_EMAILJS_SERVICE_ID=your_service_id
+     VITE_EMAILJS_TEMPLATE_ID=your_template_id
+     ```
+   - Variables with `VITE_` prefix are exposed to the frontend
+
 ## Form Validation
 
 The contact form includes comprehensive client-side validation:
@@ -126,6 +157,7 @@ Validation is implemented using:
 - `Zod` for schema definition and type inference
 - `react-hook-form` for form state management
 - `@hookform/resolvers/zod` for integration
+- `emailjs-com` for email delivery
 
 ## Notes
 

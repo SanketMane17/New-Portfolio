@@ -1,10 +1,11 @@
 import { FadeIn } from "@/components/ui/fade-in";
 import { Mail, MapPin, Send, Phone, Github, Linkedin, Copy, Check, AlertCircle } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import emailjs from "emailjs-com";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
@@ -25,29 +26,38 @@ export function Contact() {
     mode: "onBlur",
   });
 
+  useEffect(() => {
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "");
+  }, []);
+
   const onSubmit = async (data: ContactFormData) => {
     try {
-      const formData = new FormData();
-      formData.append("form-name", "contact");
-      formData.append("name", data.name);
-      formData.append("email", data.email);
-      formData.append("message", data.message);
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 
-      const response = await fetch("/", {
-        method: "POST",
-        body: formData,
+      if (!serviceId || !templateId) {
+        toast({
+          variant: "destructive",
+          title: "Configuration Error",
+          description: "Email service is not properly configured.",
+        });
+        return;
+      }
+
+      await emailjs.send(serviceId, templateId, {
+        from_name: data.name,
+        from_email: data.email,
+        to_email: "msanket450@gmail.com",
+        message: data.message,
+        reply_to: data.email,
       });
 
-      if (response.ok) {
-        toast({
-          title: "Message Sent!",
-          description: "Thank you for reaching out. I'll get back to you soon.",
-          className: "bg-white/10 backdrop-blur-md border-white/20 text-white",
-        });
-        reset();
-      } else {
-        throw new Error("Failed to send message");
-      }
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+        className: "bg-white/10 backdrop-blur-md border-white/20 text-white",
+      });
+      reset();
     } catch (error) {
       toast({
         variant: "destructive",
