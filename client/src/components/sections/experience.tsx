@@ -18,7 +18,7 @@ export function Experience() {
         "Improved app startup time by ~35% via deferred initialization of non-critical services post-splash",
         "Built Spring Boot services for Slack, Zoho, and push notification integrations with Puppeteer PDF generation"
       ],
-      tech: ["Flutter", "React.js", "RESTful APIs", "GitHub Actions", "Shorebird", "Spring Boot", "Puppeteer", "Figma Integration"]
+      tech: ["Flutter", "React.js", "RESTful APIs", "GitHub Actions", "AI Integration", "Shorebird", "Spring Boot", "Puppeteer", "Figma Integration"]
     },
     {
       id: 2,
