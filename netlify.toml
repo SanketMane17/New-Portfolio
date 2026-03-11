@@ -6,6 +6,10 @@
   [env.production]
     NODE_ENV = "production"
 
+[[forms]]
+  name = "contact"
+  netlify = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

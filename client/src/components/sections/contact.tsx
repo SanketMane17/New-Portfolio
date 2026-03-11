@@ -1,27 +1,54 @@
 import { FadeIn } from "@/components/ui/fade-in";
-import { useCreateMessage } from "@/hooks/use-messages";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { api, type MessageInput } from "@shared/routes";
 import { Mail, MapPin, Send, Phone, Github, Linkedin, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 export function Contact() {
-  const mutation = useCreateMessage();
   const { toast } = useToast();
   const [copied, setCopied] = useState(false);
-  const form = useForm<MessageInput>({
-    resolver: zodResolver(api.messages.create.input),
-    defaultValues: { name: "", email: "", message: "" },
-  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
-  const onSubmit = (data: MessageInput) => {
-    mutation.mutate(data, {
-      onSuccess: () => {
-        form.reset();
-      },
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          "form-name": "contact",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }).toString(),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+          className: "bg-white/10 backdrop-blur-md border-white/20 text-white",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const copyToClipboard = () => {
@@ -115,34 +142,37 @@ export function Contact() {
           </FadeIn>
 
           <FadeIn delay={0.3} direction="left">
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form onSubmit={onSubmit} name="contact" method="POST" className="space-y-6">
+              <input type="hidden" name="form-name" value="contact" />
+              
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-white/80 pl-1">Your Name</label>
                   <input
                     id="name"
-                    {...form.register("name")}
+                    name="name"
+                    type="text"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#00F5FF]/50 focus:border-[#00F5FF] transition-all"
                     placeholder="John Doe"
-                    disabled={mutation.isPending}
+                    disabled={isSubmitting}
                   />
-                  {form.formState.errors.name && (
-                    <p className="text-red-400 text-sm pl-1">{form.formState.errors.name.message}</p>
-                  )}
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-white/80 pl-1">Email Address</label>
                   <input
                     id="email"
+                    name="email"
                     type="email"
-                    {...form.register("email")}
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/50 focus:border-[#7C3AED] transition-all"
                     placeholder="john@example.com"
-                    disabled={mutation.isPending}
+                    disabled={isSubmitting}
                   />
-                  {form.formState.errors.email && (
-                    <p className="text-red-400 text-sm pl-1">{form.formState.errors.email.message}</p>
-                  )}
                 </div>
               </div>
               
@@ -150,24 +180,24 @@ export function Contact() {
                 <label htmlFor="message" className="text-sm font-medium text-white/80 pl-1">Message</label>
                 <textarea
                   id="message"
-                  {...form.register("message")}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   rows={5}
                   className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#F59E0B]/50 focus:border-[#F59E0B] transition-all resize-none"
                   placeholder="Tell me about your project..."
-                  disabled={mutation.isPending}
+                  disabled={isSubmitting}
                 />
-                {form.formState.errors.message && (
-                  <p className="text-red-400 text-sm pl-1">{form.formState.errors.message.message}</p>
-                )}
               </div>
 
               <button
                 type="submit"
-                disabled={mutation.isPending}
+                disabled={isSubmitting}
                 className="w-full py-4 rounded-xl font-bold text-[#0A0A0F] bg-gradient-to-r from-[#00F5FF] to-[#7C3AED] hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(0,245,255,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {mutation.isPending ? "Sending..." : "Send Message"}
-                {!mutation.isPending && <Send className="w-5 h-5" />}
+                {isSubmitting ? "Sending..." : "Send Message"}
+                {!isSubmitting && <Send className="w-5 h-5" />}
               </button>
             </form>
           </FadeIn>
