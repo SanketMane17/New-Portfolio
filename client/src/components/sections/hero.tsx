@@ -43,7 +43,7 @@ export function Hero() {
           
           <FadeIn delay={0.3}>
             <p className="text-lg md:text-xl text-muted-foreground max-w-lg mb-8 leading-relaxed font-body">
-              Frontend heavy full stack engineer with years of experience building production-grade mobile & web apps.
+              Frontend heavy full stack engineer with 3+ years of experience building production-grade mobile & web apps.
             </p>
           </FadeIn>
           
