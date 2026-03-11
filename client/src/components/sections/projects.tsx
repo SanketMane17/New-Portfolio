@@ -7,6 +7,15 @@ import bizpePng from "@assets/Screenshot_2026-03-11_at_1.27.50_PM_1773216024561.
 export function Projects() {
   const projects = [
     {
+      title: "BizPe – Antler-backed Fintech Startup",
+      duration: "December 2024 – Present",
+      description: "A fintech platform for SMBs in India, BizPe simplifies payment collection, reconciliation, and cash flow management with seamless ERP integration and a user-friendly mobile interface. Features integrated AI-powered voice billing using Speech-to-Text and LLM pipelines.",
+      image: bizpePng,
+      tags: ["Flutter", "React.js", "Spring Boot", "System Design", "Riverpod", "Figma Integration", "Tailwind CSS", "Material UI", "Node.js", "RESTful APIs", "Puppeteer", "Zustand"],
+      links: { github: "https://github.com/SanketMane17", live: "https://bizpe.onelink.me/dWcg/21k6wgyp" },
+      featured: true,
+    },
+    {
       title: "StreamMate",
       duration: "2024",
       description: "Built real-time video conferencing app with Next.js and Stream SDK for WebRTC-based audio/video communication. Implemented OAuth authentication and protected routes using Clerk for secure session management.",
@@ -22,15 +31,6 @@ export function Projects() {
       image: qkartPng,
       tags: ["React JS", "JavaScript", "Node", "Express", "Material UI", "REST APIs"],
       links: { github: "https://github.com/SanketMane17/QKart", live: "https://sanket-qkart.netlify.app/" },
-      featured: true,
-    },
-    {
-      title: "BizPe – Antler-backed Fintech Startup",
-      duration: "December 2024 – Present",
-      description: "A fintech platform for SMBs in India, BizPe simplifies payment collection, reconciliation, and cash flow management with seamless ERP integration and a user-friendly mobile interface. Features integrated AI-powered voice billing using Speech-to-Text and LLM pipelines.",
-      image: bizpePng,
-      tags: ["Spring Boot", "System Design", "Material UI", "Riverpod", "Figma Integration"],
-      links: { github: "https://github.com/SanketMane17", live: "https://bizpe.onelink.me/dWcg/21k6wgyp" },
       featured: true,
     }
   ];
