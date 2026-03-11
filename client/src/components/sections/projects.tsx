@@ -2,7 +2,7 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
 import streammatePng from "@assets/Screenshot_2026-03-06_at_1.53.30_PM_1773165399053.png";
 import qkartPng from "@assets/Screenshot_2026-03-06_at_1.53.43_PM_1773165399054.png";
-import fintech from "@assets/Screenshot_2026-03-06_at_1.55.05_PM_1773165399054.png";
+import bizpePng from "@assets/Screenshot_2026-03-11_at_1.27.50_PM_1773216024561.png";
 
 export function Projects() {
   const projects = [
@@ -25,11 +25,11 @@ export function Projects() {
       featured: true,
     },
     {
-      title: "BizPe",
+      title: "BizPe – Antler-backed Fintech Startup",
       duration: "December 2024 – Present",
       description: "A fintech platform for SMBs in India, BizPe simplifies payment collection, reconciliation, and cash flow management with seamless ERP integration and a user-friendly mobile interface. Features integrated AI-powered voice billing using Speech-to-Text and LLM pipelines.",
-      image: fintech,
-      tags: ["Flutter", "React.js", "RESTful APIs", "GitHub Actions", "Shorebird", "Integrated AI"],
+      image: bizpePng,
+      tags: ["Spring Boot", "System Design", "Material UI", "Riverpod", "Figma Integration"],
       links: { github: "https://github.com/SanketMane17", live: "https://bizpe.onelink.me/dWcg/21k6wgyp" },
       featured: true,
     }
