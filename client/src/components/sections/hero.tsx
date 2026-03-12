@@ -56,7 +56,7 @@ export function Hero() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a 
-              href="/resume.pdf"
+              href={"https://drive.google.com/file/d/1kZ0AFlBqeb9MZEZu8qLmRHDKBEyqOEjf/view?usp=drive_link"}
               target="_blank"
               className="px-8 py-4 rounded-xl font-semibold glass-card hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center text-white"
             >
